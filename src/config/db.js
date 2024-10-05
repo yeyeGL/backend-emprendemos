@@ -27,7 +27,7 @@ const createTable = async () => {
   try {
     await pool.query(createUsersTable);  
     //Documentalo por si te molesta jiji 
-    // console.log('Tabla "users" creada exitosamente');
+    console.log('Tabla "users" creada exitosamente');
   } catch (error) {
     console.error('Error al crear la tabla de usuarios:', error);
   } finally {
