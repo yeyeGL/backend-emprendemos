@@ -4,9 +4,9 @@ import { pool } from "./config/db.js"
 
 const getClient = async()=>{
     try {
-        const result = await pool.query("SELECT * FROM userss")
+        const result = await pool.query("SELECT * FROM products")
         console.table(result.rows)
-        console.log("Lista de ususrios")
+        console.log("Lista")
     } catch (error) {
         console.log(error)
         

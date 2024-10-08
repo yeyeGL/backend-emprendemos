@@ -60,3 +60,21 @@ export const login = async (req, res) => {
     return res.status(500).json({ message: "Error al autenticar el usuario" });
   }
 };
+
+export const products = async (req, res) => {
+  const { title, description, price, category, imageUrl } = req.body;
+
+  try {
+    const newProduct = await createProduct(title, description, price, category, imageUrl);
+    return res.status(201).json({
+      message: 'Producto creado exitosamente',
+      product: newProduct,
+    });
+  } catch (error) {
+    console.error('Error al crear el producto:', error); 
+    return res.status(500).json({
+      message: 'Error al crear el producto',
+      error: error.message,
+    });
+  }
+};

@@ -21,14 +21,29 @@ const createUsersTable = `
   );
 `;
 
-const createTable = async () => {
+// Tabla de products
+const createProductsTable = `
+  CREATE TABLE IF NOT EXISTS products (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    price NUMERIC(10, 2) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    image_url VARCHAR(255) 
+  );
+`;
+
+const createTables = async () => {
   try {
     await pool.query(createUsersTable);
-    console.log('Tabla "users" creada exitosamente');
+    console.log('Tabla "userss" creada exitosamente');
+
+    await pool.query(createProductsTable);
+    console.log('Tabla "products" creada exitosamente');
   } catch (error) {
-    console.error('Error al crear la tabla de usuarios:', error);
+    console.error('Error al crear las tablas:', error);
   }
 };
 
-
-createTable(); 
+// Llamada a la función para crear las tablas
+createTables();
